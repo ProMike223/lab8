@@ -1,13 +1,10 @@
 ﻿begin
-  var year:=ReadInteger('Enter a year: ');
-  assert(year > 0);
+  var (hours, mins, seconds):= ReadInteger3('Enter hours, minutes and seconds: ');
+  assert((hours >= 0) and (hours < 24));
+  assert((minutes >= 0) and (minutes < 60));
+  assert((seconds >= 0) and (seconds < 60));
   
-  var is_leap:= false;
+  var num_seconds := hours * 3600 + minutes * 60 + seconds;
   
-  if (year mod 4)=0 then
-    if (year mod 100 <> 0) or (((year mod 100) = 0) and ((year mod 400) = 0)) then 
-      is_leap := true;
-  
-  
-  Println(is_leap?'Yes, the year is leap':'No, the year is not leap');
+  Println($'There are {num_seconds} seconds');
 end.
